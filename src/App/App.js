@@ -12,7 +12,8 @@ class App extends Component {
     super();
     this.state = {
       movieData: movieData.movies,
-      movieID: 0
+      movieID: 0,
+      modalShowing: false
     }
   }
 
@@ -29,8 +30,10 @@ class App extends Component {
   getMovie = (event) => {
     const movieID = event.target.closest("article").id;
 
-    this.setState({movieID: movieID});
-    
+    this.setState({
+      movieID: movieID,
+      modalShowing: true
+    });
   }
 
   getAllMovieData = (movieID) => {
@@ -39,15 +42,25 @@ class App extends Component {
     return foundMovie;
   }
 
-
+  closeModal = () => {
+    this.setState({modalShowing: false});
+  }
   
   render() {
     return (
       <div className="App">
-        <Header className="header" />
-        <Modal movieID={this.state.movieID} getAllMovieData={this.getAllMovieData}/>
-        {/* <RabbitTrail className="rabbit-trail" /> */}
-        <CardContainer className="card-container" movieData={this.state.movieData} getMovie={this.getMovie} />
+        <Header 
+          className="header" 
+        />
+        {(this.state.modalShowing) ?
+        <Modal 
+          movieID={this.state.movieID} getAllMovieData={this.getAllMovieData}
+          closeModal={this.closeModal}
+        /> 
+        :
+        <CardContainer
+          className="card-container" movieData={this.state.movieData} getMovie={this.getMovie}
+        />}
       </div>
     );
   }
