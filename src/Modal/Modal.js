@@ -2,11 +2,8 @@ import React from 'react';
 import './Modal.scss';
 
 
-function Modal({movieID, getAllMovieData, closeModal}) {
+function Modal({foundMovie, closeModal}) {
 
-  const foundMovie = getAllMovieData(movieID);
-
-  console.log(foundMovie);
   return (
     (!foundMovie) ? <p>No movie clicked yet</p> : 
     <section className="modal">

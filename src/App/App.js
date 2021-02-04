@@ -13,6 +13,7 @@ class App extends Component {
     this.state = {
       movieData: movieData.movies,
       movieID: 0,
+      foundMovie: null,
       modalShowing: false
     }
   }
@@ -29,16 +30,17 @@ class App extends Component {
 
   getMovie = (event) => {
     const movieID = event.target.closest("article").id;
+    const foundMovie = this.getAllMovieData(movieID);
 
     this.setState({
       movieID: movieID,
-      modalShowing: true
+      modalShowing: true,
+      foundMovie: foundMovie
     });
   }
 
   getAllMovieData = (movieID) => {
     const foundMovie = this.state.movieData.find(movie => movie.id.toString() === movieID);
-
     return foundMovie;
   }
 
@@ -54,7 +56,7 @@ class App extends Component {
         />
         {(this.state.modalShowing) ?
         <Modal 
-          movieID={this.state.movieID} getAllMovieData={this.getAllMovieData}
+          foundMovie={this.state.foundMovie}
           closeModal={this.closeModal}
         /> 
         :
