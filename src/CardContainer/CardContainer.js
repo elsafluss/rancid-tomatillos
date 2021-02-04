@@ -1,5 +1,5 @@
 import React from 'react';
-import './CardContainer.css'
+import './CardContainer.scss'
 import Card from '../Card/Card';
 
 const CardContainer = ({movieData}) => {

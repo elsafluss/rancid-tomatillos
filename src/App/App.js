@@ -1,5 +1,5 @@
 
-import './App.css';
+import './App.scss';
 import React, { Component } from 'react';
 import Header from '../Header/Header';
 // import RabbitTrail from '../RabbitTrail/RabbitTrail'
