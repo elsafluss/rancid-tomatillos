@@ -1,8 +1,8 @@
 @import "../styles/variables";
 
 .App {
+  width: 95vw;
   font-family: $font;
-  border: 1px solid purple;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

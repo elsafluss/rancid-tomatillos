@@ -7,10 +7,10 @@ function Modal({foundMovie, closeModal}) {
   return (
     (!foundMovie) ? <p>No movie clicked yet</p> : 
     <section className="modal">
-      <p>Title</p>
-      <p>{foundMovie.title}</p>
-      <p>{foundMovie.release_date}</p>
-      <p>{foundMovie.average_rating}</p>
+      <img src={foundMovie.backdrop_path} alt="movie backdrop"/>
+      <h2>{foundMovie.title}</h2>
+      <p>Release Date: {foundMovie.release_date}</p>
+      <p>Average Rating: {foundMovie.average_rating}</p>
       <button onClick={closeModal}>CLOSE</button>
     </section>
   )

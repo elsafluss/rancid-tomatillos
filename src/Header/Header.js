@@ -7,9 +7,9 @@ const Header = () => {
       <h1>
         Rancid Tomatillos
       </h1>
-      <h1>
+      {/* <h1>
         Search
-      </h1>
+      </h1> */}
       {/* <input /> */}
     </header>
   )

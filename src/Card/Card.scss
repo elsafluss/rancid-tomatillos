@@ -1,0 +1,26 @@
+@import '../styles/variables';
+
+.card {
+  box-shadow: 3px 3px 10px 1px $lowlight;
+}
+
+.card:hover {
+  cursor: pointer;
+  box-shadow: 3px 3px 10px 1px $highlight;
+}
+
+.thumbnail {
+  width: 100%;
+}
+
+.movie-title {
+  text-align: center;
+  font-weight: 600;
+}
+
+.movie-rating,
+.movie-date {
+  line-height: 1.6;
+  font-size: smaller;
+  padding: 0 .5em;
+}
