@@ -1,4 +1,7 @@
+@import "../styles/variables";
+
 .App {
+  font-family: $font;
   border: 1px solid purple;
   display: flex;
   flex-direction: column;
