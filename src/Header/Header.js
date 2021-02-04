@@ -1,16 +1,17 @@
 import React from 'react';
+import './Header.css'
 
 const Header = () => {
   return (
-    <div>
-      <nav>
+    <header>
+      <h1>
         Nav
-      </nav>
+      </h1>
       <h1>
         Rancid Tomatillos
       </h1>
       {/* <input /> */}
-    </div>
+    </header>
   )
 }
 

@@ -10,7 +10,6 @@ class App extends Component {
     return (
       <div className="App">
         <Header className="header" />
-        <p>Hello</p>
         {/* <RabbitTrail className="rabbit-trail" /> */}
         <CardContainer className="card-container" />
       </div>
