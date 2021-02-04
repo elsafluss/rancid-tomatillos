@@ -1,16 +1,18 @@
 import React from 'react';
 import './CardContainer.css'
+import Card from '../Card/Card';
 
-const CardContainer = () => {
+const CardContainer = ({movieData}) => {
+  const movies = movieData.map(movie => {
+    return <Card 
+      className="card" 
+      movie={movie} 
+    />
+  })
+
   return (
     <main>
-      <div className="card">
-        Card
-      </div>
-      <div className="card">
-        Card
-      </div>
-      {/* <input /> */}
+      {movies}
     </main>
   )
 }

@@ -5,10 +5,10 @@ const Header = () => {
   return (
     <header>
       <h1>
-        Nav
+        Rancid Tomatillos
       </h1>
       <h1>
-        Rancid Tomatillos
+        Search
       </h1>
       {/* <input /> */}
     </header>
