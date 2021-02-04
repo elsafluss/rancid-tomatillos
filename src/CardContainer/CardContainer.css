@@ -1,0 +1,15 @@
+main {
+  padding: 1em;
+  background-color: #202125;
+  color: #E3C4A0;
+  box-sizing: border-box;
+  display: grid;
+  height: 80vh;
+  width: 100vw;
+  gap: 1em;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card {
+  border: 1px solid purple;
+}
