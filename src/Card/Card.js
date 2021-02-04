@@ -1,10 +1,8 @@
 import React from 'react';
 
-const Card = ({movie}) => {
-
-  console.log(movie);
+const Card = ({movie, getMovie}) => {
   return (
-    <article>
+    <article id={movie.id} onClick={getMovie} >
       <p className="movie-title">
         {movie.title}
       </p>
