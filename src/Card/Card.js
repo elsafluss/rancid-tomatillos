@@ -1,16 +1,18 @@
 import React from 'react';
+import './Card.scss';
 
 const Card = ({movie, getMovie}) => {
   return (
-    <article id={movie.id} onClick={getMovie} >
+    <article className="card" id={movie.id} onClick={getMovie} >
+      <img className="thumbnail" src={movie.poster_path} alt="thumbnail"/>
       <p className="movie-title">
         {movie.title}
       </p>
       <p className="movie-rating">
-        {movie.average_rating}
+        Rating: {movie.average_rating.toFixed(1)}
       </p>
       <p className="movie-date">
-        {movie.release_date}
+        Released: {movie.release_date}
       </p>
       {/* <p className="movie-rating">
         Avg Rating

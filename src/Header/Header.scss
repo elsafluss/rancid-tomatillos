@@ -1,7 +1,11 @@
+@import '../styles/variables';
+
 header {
-  border: 1px solid purple;
+  padding-left: 3em;
+  color: $highlight;
+  // border: 1px solid purple;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 90vw;
+  width: 90%;
 }
