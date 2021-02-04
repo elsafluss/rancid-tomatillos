@@ -10,7 +10,7 @@ function Modal({foundMovie, closeModal}) {
       <img src={foundMovie.backdrop_path} alt="movie backdrop"/>
       <h2>{foundMovie.title}</h2>
       <p>Release Date: {foundMovie.release_date}</p>
-      <p>Average Rating: {foundMovie.average_rating.toFixed(1)} / 10</p>
+      <p>Average Rating: {foundMovie.average_rating}</p>
       <button onClick={closeModal}>CLOSE</button>
     </section>
   )

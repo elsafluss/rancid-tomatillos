@@ -5,38 +5,41 @@ import Header from '../Header/Header';
 import Modal from '../Modal/Modal';
 // import RabbitTrail from '../RabbitTrail/RabbitTrail'
 import CardContainer from '../CardContainer/CardContainer';
+import {getAllMovies, getMovie } from '../util.js';
 import movieData from '../movieData';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      movieData: movieData.movies,
+      movieData: [],
       movieID: 0,
       foundMovie: null,
       modalShowing: false
     }
   }
 
-  // funciton here?
-  // get click event
-  // happens in card container
+  componentDidMount() {
+    getAllMovies()
+    .then(movies => {
+      console.log(movies);
+      this.setState({movieData: movies.movies})
+    })
+    .catch(error => console.log(error))
+  }
 
-
-  // function that shows movie will be defined in app
-  // pass this function into card container to grab the event.target
-  // return that object (single movie) here
-  // pass that object into modal for further destructuring
-
-  getMovie = (event) => {
+  setFoundMovie = (event) => {
     const movieID = event.target.closest("article").id;
-    const foundMovie = this.getAllMovieData(movieID);
-
-    this.setState({
-      movieID: movieID,
-      modalShowing: true,
-      foundMovie: foundMovie
-    });
+    getMovie(movieID)
+    .then(movie => {
+      console.log(movie.movie);
+      this.setState({
+        movieID: movie.movie.id,
+        modalShowing: true,
+        foundMovie: movie.movie
+      });
+    })
+    .catch(error => console.log(error))
   }
 
   getAllMovieData = (movieID) => {
@@ -61,7 +64,7 @@ class App extends Component {
         /> 
         :
         <CardContainer
-          className="card-container" movieData={this.state.movieData} getMovie={this.getMovie}
+          className="card-container" movieData={this.state.movieData} getMovie={this.setFoundMovie}
         />}
       </div>
     );
