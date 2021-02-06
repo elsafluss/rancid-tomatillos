@@ -1,3 +1,5 @@
+@import '../styles/variables';
+
 .modal-container {
   align-items: center;
   background-color: gray;
@@ -5,38 +7,78 @@
   height: 90vh;
   justify-content: center;
   margin: auto;
-  
-  
-
   width: 90vw;
- 
 }
+
 .modal {
   align-items: center;
-  background-color: whitesmoke;
+  background-color: $light;
   border-radius: 3px;
-  top: 81px;
+  top: 30px;
   color: black;
-  display: flex;
-  flex-direction: column;
-  font-size: 200%;
+  font-size: 100%;
   height: 700px;
   justify-content: center;
   line-height: 1.6;
-  margin: 1em 1em 3em 1em;
+  margin: auto;
   position: relative;
   text-align: center;
-  width: 700px;
+  width: 750px;
   z-index: 1;
-  // pointer-events: none;
-  position: absolute;
 }
-// .modal img {
-//   border: black;
-//   box-shadow: -3px -3px 4px gray;
-//   max-height: 250px;
-//   width: 80%;
-// }
+
+.modal img {
+  border: black;
+  grid-column: 1 / 4;
+  box-shadow: -5px -5px 6px $dark;
+  height: auto;
+  width: 500px;
+  margin: 2em;
+  margin-bottom: 0;
+  position: relative;
+}
+
+.m-data {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: .5em;
+  margin: 0 5.8em;
+  z-index: 1;
+}
+
+.m-tagline {
+  grid-column: 1 / 4;
+  text-align: left;
+}
+
+.m-title {
+  margin-top: 0;
+  grid-column: 1 / 4;
+}
+
+.m-date,
+.m-rating,
+.m-runtime,
+.m-budget,
+.m-revenue {
+  font-size: smaller;
+  margin: 0;
+  text-align: left;
+}
+
+.m-overview {
+  grid-column: 1 / 4;
+  text-align: justify;
+  line-height: 1.4;
+  font-size: smaller;
+}
+
+.m-genre {
+  font-size: smaller;
+  grid-column: 1 / 4;
+  text-align: left;
+  width: 100%;
+}
 
 .show {
   opacity: 1;
