@@ -80,6 +80,13 @@
   width: 100%;
 }
 
+.m-genre ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+}
+
 .show {
   opacity: 1;
   pointer-events: auto;

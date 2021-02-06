@@ -15,7 +15,12 @@ function Modal({foundMovie, closeModal}) {
         <p className="m-rating">Average Rating: {foundMovie.average_rating.toFixed(1)}</p>
         <p className="m-runtime">Runtime: {foundMovie.runtime} minutes</p>
         <p className="m-overview">{foundMovie.overview}</p>
-        <p className="m-genre">Filed under: {foundMovie.genres[0].name}</p>
+        <div className="m-genre">
+          <p>Filed under:</p>
+            <ul>
+              {foundMovie.genres.map(genre => <li>{genre}</li>)}
+            </ul>
+        </div>
         <p className="m-budget">Budget: ${foundMovie.budget.toFixed(2)}</p>
         <p className="m-revenue">Revenue: ${foundMovie.revenue.toLocaleString()}</p>
       </div>
