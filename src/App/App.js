@@ -22,7 +22,6 @@ class App extends Component {
   componentDidMount() {
     getAllMovies()
     .then(movies => {
-      console.log(movies);
       this.setState({movieData: movies.movies})
     })
     .catch(error => console.log(error))

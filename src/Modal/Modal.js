@@ -3,7 +3,8 @@ import './Modal.scss';
 
 
 function Modal({foundMovie, closeModal}) {
-  console.log(foundMovie)
+  const listGenres = foundMovie.genres.map(genre => <li>{genre}</li>)
+
   return (
     (!foundMovie) ? <p>No movie clicked yet</p> : 
     <section className="modal">
@@ -18,7 +19,7 @@ function Modal({foundMovie, closeModal}) {
         <div className="m-genre">
           <p>Filed under:</p>
             <ul>
-              {foundMovie.genres.map(genre => <li>{genre}</li>)}
+              {listGenres}
             </ul>
         </div>
         <p className="m-budget">Budget: ${foundMovie.budget.toFixed(2)}</p>
