@@ -5,10 +5,11 @@ import Form from '../Form/Form'
 const Header = ({searchMovies}) => {
   return (
     <header>
-      <h1>
-        Rancid Tomatillos
-      </h1>
       <Form searchMovies={searchMovies} />
+      <h1>
+        Rancid <br></br>
+        Tomatillos
+      </h1>
     </header>
   )
 }
