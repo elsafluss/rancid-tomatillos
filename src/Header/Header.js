@@ -1,16 +1,14 @@
 import React from 'react';
 import './Header.scss';
+import Form from '../Form/Form'
 
-const Header = () => {
+const Header = ({searchMovies}) => {
   return (
     <header>
       <h1>
         Rancid Tomatillos
       </h1>
-      {/* <h1>
-        Search
-      </h1> */}
-      {/* <input /> */}
+      <Form searchMovies={searchMovies} />
     </header>
   )
 }

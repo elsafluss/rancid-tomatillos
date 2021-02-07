@@ -6,7 +6,6 @@ import Modal from '../Modal/Modal';
 // import RabbitTrail from '../RabbitTrail/RabbitTrail'
 import CardContainer from '../CardContainer/CardContainer';
 import {getAllMovies, getMovie } from '../util.js';
-import movieData from '../movieData';
 
 class App extends Component {
   constructor() {
@@ -15,6 +14,7 @@ class App extends Component {
       movieData: [],
       movieID: 0,
       foundMovie: null,
+      moviesFound: [],
       modalShowing: false
     }
   }
@@ -31,7 +31,6 @@ class App extends Component {
     const movieID = event.target.closest("article").id;
     getMovie(movieID)
     .then(movie => {
-      console.log(movie.movie);
       this.setState({
         movieID: movie.movie.id,
         modalShowing: true,
@@ -49,12 +48,21 @@ class App extends Component {
   closeModal = () => {
     this.setState({modalShowing: false});
   }
+
+  searchMovies = (searchTerm) => {
+    const moviesFound =  this.state.movieData.filter(movie => {
+      return movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+    })
+
+    this.setState({moviesFound: moviesFound})
+  }
   
   render() {
     return (
       <div className="App">
         <Header 
-          className="header" 
+          className="header"
+          searchMovies={this.searchMovies}
         />
         {(this.state.modalShowing) ?
         <Modal 
@@ -63,7 +71,7 @@ class App extends Component {
         /> 
         :
         <CardContainer
-          className="card-container" movieData={this.state.movieData} getMovie={this.setFoundMovie}
+          className="card-container" movieData={!this.state.moviesFound.length ? this.state.movieData : this.state.moviesFound} getMovie={this.setFoundMovie}
         />}
       </div>
     );
