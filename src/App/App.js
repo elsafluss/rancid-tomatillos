@@ -6,7 +6,6 @@ import Modal from '../Modal/Modal';
 // import RabbitTrail from '../RabbitTrail/RabbitTrail'
 import CardContainer from '../CardContainer/CardContainer';
 import {getAllMovies, getMovie } from '../util.js';
-import movieData from '../movieData';
 
 class App extends Component {
   constructor() {
@@ -49,12 +48,19 @@ class App extends Component {
   closeModal = () => {
     this.setState({modalShowing: false});
   }
+
+  searchMovies = (searchTerm) => {
+    return this.state.movieData.filter(movie => {
+      return movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+    })
+  }
   
   render() {
     return (
       <div className="App">
         <Header 
-          className="header" 
+          className="header"
+          searchMovies={this.searchMovies}
         />
         {(this.state.modalShowing) ?
         <Modal 

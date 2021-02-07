@@ -22,7 +22,7 @@ function Modal({foundMovie, closeModal}) {
               {listGenres}
             </ul>
         </div>
-        <p className="m-budget">Budget: ${foundMovie.budget.toFixed(2)}</p>
+        <p className="m-budget">Budget: ${foundMovie.budget.toLocaleString()}</p>
         <p className="m-revenue">Revenue: ${foundMovie.revenue.toLocaleString()}</p>
       </div>
       <button onClick={closeModal}>CLOSE</button>
