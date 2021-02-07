@@ -8,10 +8,14 @@ class Form extends Component {
     }
   }
 
+  // searchMoviesHere = () => {
+  //   this.props.searchMovies(this.state.searchTerm)
+  // }
+
   handleChange = event => {
     this.setState({searchTerm: event.target.value})
-    console.log(this.props.searchMovies(this.state.searchTerm))
-    this.props.searchMovies(this.state.searchTerm)
+
+    this.props.searchMovies(event.target.value)
   }
 
   render() {

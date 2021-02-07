@@ -14,6 +14,7 @@ class App extends Component {
       movieData: [],
       movieID: 0,
       foundMovie: null,
+      moviesFound: [],
       modalShowing: false
     }
   }
@@ -30,7 +31,6 @@ class App extends Component {
     const movieID = event.target.closest("article").id;
     getMovie(movieID)
     .then(movie => {
-      console.log(movie.movie);
       this.setState({
         movieID: movie.movie.id,
         modalShowing: true,
@@ -50,9 +50,11 @@ class App extends Component {
   }
 
   searchMovies = (searchTerm) => {
-    return this.state.movieData.filter(movie => {
+    const moviesFound =  this.state.movieData.filter(movie => {
       return movie.title.toLowerCase().includes(searchTerm.toLowerCase())
     })
+
+    this.setState({moviesFound: moviesFound})
   }
   
   render() {
@@ -69,7 +71,7 @@ class App extends Component {
         /> 
         :
         <CardContainer
-          className="card-container" movieData={this.state.movieData} getMovie={this.setFoundMovie}
+          className="card-container" movieData={!this.state.moviesFound.length ? this.state.movieData : this.state.moviesFound} getMovie={this.setFoundMovie}
         />}
       </div>
     );
