@@ -14,8 +14,9 @@ class App extends Component {
       movieData: [],
       movieID: 0,
       foundMovie: null,
-      moviesFound: [],
-      modalShowing: false
+      // moviesFound: [],
+      modalShowing: false,
+      searchTerm: ''
     }
   }
 
@@ -49,12 +50,18 @@ class App extends Component {
     this.setState({modalShowing: false});
   }
 
-  searchMovies = (searchTerm) => {
-    const moviesFound =  this.state.movieData.filter(movie => {
-      return movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+  searchMovies = () => {
+    const moviesFound = this.state.movieData.filter(movie => {
+      return movie.title.toLowerCase().includes(this.state.searchTerm.toLowerCase())
     })
+    return moviesFound
+    // this.setState({moviesFound: moviesFound})
+  }
 
-    this.setState({moviesFound: moviesFound})
+  handleChange = event => {
+    this.setState({searchTerm: event.target.value})
+
+    this.searchMovies(event.target.value)
   }
   
   render() {
@@ -63,6 +70,8 @@ class App extends Component {
         <Header 
           className="header"
           searchMovies={this.searchMovies}
+          handleChange={this.handleChange}
+          searchTerm={this.state.searchTerm}
         />
         {(this.state.modalShowing) ?
         <Modal 
@@ -71,7 +80,7 @@ class App extends Component {
         /> 
         :
         <CardContainer
-          className="card-container" movieData={!this.state.moviesFound.length ? this.state.movieData : this.state.moviesFound} getMovie={this.setFoundMovie}
+          className="card-container" movieData={!this.searchMovies(this.state.searchTerm).length ? this.state.movieData : this.searchMovies(this.state.searchTerm)} getMovie={this.setFoundMovie}
         />}
       </div>
     );

@@ -3,6 +3,7 @@ import './CardContainer.scss'
 import Card from '../Card/Card';
 
 const CardContainer = ({movieData, getMovie}) => {
+  console.log(movieData)
   const movies = movieData.map(movie => {
     return <Card 
       className="card" 
