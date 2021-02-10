@@ -27,24 +27,23 @@ class Modal extends Component {
           <p className="m-tagline">{foundMovie.tagline}</p>
           <h2 className="m-title">{foundMovie.title}</h2>
           <p className="m-date">Release Date: {foundMovie.release_date}</p>
-          <p className="m-rating">Average Rating: {foundMovie.average_rating.toFixed(1)}</p>
+          <p className="m-rating">Average Rating: {foundMovie.average_rating.toFixed(1)}/10.0</p>
           <p className="m-runtime">Runtime: {foundMovie.runtime} minutes</p>
           <p className="m-overview">{foundMovie.overview}</p>
           <div className="m-genre">
             <p>Filed under:</p>
-              <ul>
-                {foundMovie.genres.map(genre => <li>{genre}</li>)}
-              </ul>
+              <ul>{listGenres}</ul>
           </div>
-          <p className="m-budget">Budget: ${foundMovie.budget.toLocaleString()}</p>
-          <p className="m-revenue">Revenue: ${foundMovie.revenue.toLocaleString()}</p>
+          {(!foundMovie.budget) ? <p className="m-budget">Budget not available</p> :
+            <p className="m-budget">Budget: ${foundMovie.budget.toLocaleString()}</p>}
+          {(!foundMovie.revenue) ? <p className="m-budget">Revenue not available</p> :
+          <p className="m-revenue">Revenue: ${foundMovie.revenue.toLocaleString()}</p>}
         </div>
-        <Link to="/" >
-          <button>CLOSE</button>
-        </Link>
+        <button onClick={closeModal}>CLOSE</button>
       </section>
     )
   }
+
 }
 
 export default Modal;
