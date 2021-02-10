@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types'
 import { getMovie } from '../util.js';
 import { Link } from 'react-router-dom'
 import './Modal.scss';
@@ -44,6 +45,11 @@ class Modal extends Component {
     )
   }
 
+}
+
+Modal.propTypes = {
+  foundMovie: PropTypes.object,
+  closeModal: PropTypes.func
 }
 
 export default Modal;

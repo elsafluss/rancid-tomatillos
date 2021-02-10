@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 
 function Form ({searchTerm, handleChange}) {
+  handleChange = event => {
+    this.setState({searchTerm: event.target.value})
+    this.props.searchMovies(event.target.value)
+  }
 
-  // searchMoviesHere = () => {
-  //   this.props.searchMovies(this.state.searchTerm)
-  // }
+  render() {
     return (
       <form labelFor="search">
         <input 
@@ -19,3 +22,7 @@ function Form ({searchTerm, handleChange}) {
 }
 
 export default Form
+
+Form.propTypes = {
+  searchMovies: PropTypes.func
+}
