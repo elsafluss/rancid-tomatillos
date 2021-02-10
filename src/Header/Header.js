@@ -2,13 +2,14 @@ import React from 'react';
 import './Header.scss';
 import Form from '../Form/Form'
 
-const Header = ({searchMovies}) => {
+const Header = ({searchTerm, handleChange}) => {
   return (
     <header>
+      <Form searchTerm={searchTerm} handleChange={handleChange} />
       <h1>
-        Rancid Tomatillos
+        Rancid <br></br>
+        Tomatillos
       </h1>
-      <Form searchMovies={searchMovies} />
     </header>
   )
 }

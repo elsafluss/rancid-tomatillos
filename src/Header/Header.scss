@@ -1,11 +1,21 @@
 @import '../styles/variables';
 
 header {
-  padding-left: 3em;
+  // padding-left: 3em;
   color: $highlight;
-  // border: 1px solid purple;
+  border-bottom: $highlight 5px solid;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
+  width: 660px;
+  position: fixed;
+  height: 189px;
+  z-index: 1;
+  background-image: url("../background.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: contain;
+  text-align: center;
+  text-shadow: 2px 2px $dark;
 }
