@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import { getMovie } from '../util.js';
 import { Link } from 'react-router-dom'
@@ -33,18 +33,19 @@ class Modal extends Component {
           <p className="m-overview">{foundMovie.overview}</p>
           <div className="m-genre">
             <p>Filed under:</p>
-              <ul>{listGenres}</ul>
+              <ul>{foundMovie.genres.map(genre => <li>{genre}</li>)}</ul>
           </div>
           {(!foundMovie.budget) ? <p className="m-budget">Budget not available</p> :
             <p className="m-budget">Budget: ${foundMovie.budget.toLocaleString()}</p>}
           {(!foundMovie.revenue) ? <p className="m-budget">Revenue not available</p> :
           <p className="m-revenue">Revenue: ${foundMovie.revenue.toLocaleString()}</p>}
         </div>
-        <button onClick={closeModal}>CLOSE</button>
+        <Link to='/'>
+          <button>CLOSE</button>
+        </Link>
       </section>
     )
   }
-
 }
 
 Modal.propTypes = {
