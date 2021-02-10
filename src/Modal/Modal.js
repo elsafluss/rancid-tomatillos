@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import './Modal.scss';
 
 
@@ -32,4 +33,7 @@ function Modal({foundMovie, closeModal}) {
 
 export default Modal;
 
-// modal container, modal, image
+Modal.propTypes = {
+  foundMovie: PropTypes.object,
+  closeModal: PropTypes.func
+}

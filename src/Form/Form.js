@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 
 class Form extends Component {
   constructor() {
@@ -8,13 +9,8 @@ class Form extends Component {
     }
   }
 
-  // searchMoviesHere = () => {
-  //   this.props.searchMovies(this.state.searchTerm)
-  // }
-
   handleChange = event => {
     this.setState({searchTerm: event.target.value})
-
     this.props.searchMovies(event.target.value)
   }
 
@@ -30,3 +26,7 @@ class Form extends Component {
 }
 
 export default Form
+
+Form.propTypes = {
+  searchMovies: PropTypes.func
+}

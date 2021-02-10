@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import './Card.scss';
 
 const Card = ({movie, getMovie}) => {
@@ -25,3 +26,8 @@ const Card = ({movie, getMovie}) => {
 }
 
 export default Card;
+
+Card.propTypes = {
+  movie: PropTypes.object,
+  getMovie: PropTypes.func
+}

@@ -3,7 +3,6 @@ import './App.scss';
 import React, { Component } from 'react';
 import Header from '../Header/Header';
 import Modal from '../Modal/Modal';
-// import RabbitTrail from '../RabbitTrail/RabbitTrail'
 import CardContainer from '../CardContainer/CardContainer';
 import {getAllMovies, getMovie } from '../util.js';
 
