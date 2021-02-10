@@ -2,11 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types'
 
 function Form ({searchTerm, handleChange}) {
-  handleChange = event => {
-    this.setState({searchTerm: event.target.value})
-    this.props.searchMovies(event.target.value)
-  }
-
   return (
     <form labelFor="search">
       <input 

@@ -23,6 +23,6 @@ const CardContainer = ({movieData}) => {
 export default CardContainer;
 
 CardContainer.propTypes = {
-  movieData: PropTypes.object,
+  movieData: PropTypes.array,
   getMovie: PropTypes.func
 }
