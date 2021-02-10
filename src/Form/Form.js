@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
-class Form extends Component {
-  constructor() {
-    super()
-    this.state = {
-      searchTerm: ''
-    }
-  }
-
+function Form ({searchTerm, handleChange}) {
   handleChange = event => {
     this.setState({searchTerm: event.target.value})
     this.props.searchMovies(event.target.value)
@@ -16,13 +9,16 @@ class Form extends Component {
 
   render() {
     return (
-      <input 
-        placeholder="Search for a movie"
-        value={this.state.searchTerm}
-        onChange={(event) => this.handleChange(event)}
-      />
+      <form labelFor="search">
+        <input 
+          id="search"
+          type="text"
+          placeholder="Search for a movie"
+          value={searchTerm}
+          onChange={(event) => handleChange(event)}
+        />
+      </form>
     )
-  }
 }
 
 export default Form
