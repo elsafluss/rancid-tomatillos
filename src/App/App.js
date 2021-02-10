@@ -1,20 +1,17 @@
-
 import './App.scss';
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import Header from '../Header/Header';
 import Modal from '../Modal/Modal';
-// import RabbitTrail from '../RabbitTrail/RabbitTrail'
 import CardContainer from '../CardContainer/CardContainer';
-import {getAllMovies, getMovie } from '../util.js';
+import {getAllMovies } from '../util.js';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       movieData: [],
-      movieID: 0,
-      foundMovie: null,
-      // moviesFound: [],
+      movieID: NaN,
       modalShowing: false,
       searchTerm: ''
     }
@@ -28,39 +25,24 @@ class App extends Component {
     .catch(error => console.log(error))
   }
 
-  setFoundMovie = (event) => {
-    const movieID = event.target.closest("article").id;
-    getMovie(movieID)
-    .then(movie => {
-      this.setState({
-        movieID: movie.movie.id,
-        modalShowing: true,
-        foundMovie: movie.movie
-      });
-    })
-    .catch(error => console.log(error))
-  }
-
   getAllMovieData = (movieID) => {
     const foundMovie = this.state.movieData.find(movie => movie.id.toString() === movieID);
     return foundMovie;
   }
-
+  
   closeModal = () => {
     this.setState({modalShowing: false});
   }
-
+  
   searchMovies = () => {
     const moviesFound = this.state.movieData.filter(movie => {
       return movie.title.toLowerCase().includes(this.state.searchTerm.toLowerCase())
     })
     return moviesFound
-    // this.setState({moviesFound: moviesFound})
   }
-
+  
   handleChange = event => {
     this.setState({searchTerm: event.target.value})
-
     this.searchMovies(event.target.value)
   }
   
@@ -73,15 +55,21 @@ class App extends Component {
           handleChange={this.handleChange}
           searchTerm={this.state.searchTerm}
         />
-        {(this.state.modalShowing) ?
-        <Modal 
-          foundMovie={this.state.foundMovie}
-          closeModal={this.closeModal}
-        /> 
-        :
-        <CardContainer
-          className="card-container" movieData={!this.searchMovies(this.state.searchTerm).length ? this.state.movieData : this.searchMovies(this.state.searchTerm)} getMovie={this.setFoundMovie}
-        />}
+
+        <Route exact path="/" render={() => 
+          <CardContainer
+            className="card-container" 
+            movieData={!this.searchMovies(this.state.searchTerm).length ? 
+              this.state.movieData : this.searchMovies(this.state.searchTerm)} 
+          />
+        }/>
+
+        <Route path='/:id' render={({ match }) => {
+          const id = match.params.id
+          return <Modal id={id} closeModal={this.closeModal} />
+            }
+          }
+        />
       </div>
     );
   }
