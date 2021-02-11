@@ -1,0 +1,18 @@
+ {"movies": [
+  {
+    "id": 581392,
+    "poster_path": "https://image.tmdb.org/t/p/original//sy6DvAu72kjoseZEjocnm2ZZ09i.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/original//gEjNlhZhyHeto6Fy5wWy5Uk3A9D.jpg",
+    "title": "Peninsula",
+    "average_rating": 7,
+    "release_date": "2020-07-15"
+  },
+  {
+  "id": 337401,
+  "poster_path": "https://image.tmdb.org/t/p/original//aKx1ARwG55zZ0GpRvU2WrGrCG9o.jpg",
+  "backdrop_path": "https://image.tmdb.org/t/p/original//zzWGRw277MNoCs3zhyG3YmYQsXv.jpg",
+  "title": "Mulan",
+  "average_rating": 5,
+  "release_date": "2020-09-04"
+  }
+]}

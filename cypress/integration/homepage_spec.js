@@ -1,9 +1,18 @@
 describe('As a user', () => {
   it('displays the home page', () => {
+    cy.fixture("testMovieData.json")
+      .then((response) => {
+        cy.intercept("https://rancid-tomatillos.herokuapp.com/api/v2/movies", {
+          statusCode: 200,
+          body: response
+        })
+      })
+
     cy.visit('http://localhost:3000/')
+    cy
     .get("header").should("have.text", "Rancid Tomatillos")
 
-    .get("article").should('have.length', 40)
+    .get("article").should('have.length', 2)
     .get("article").within(() => {
       cy.get("img")
       cy.get("p").contains("Rating")
@@ -12,25 +21,41 @@ describe('As a user', () => {
   })
 
   it('takes in a search term and shows the matching movie', () => {
+    cy.fixture("testMovieData.json")
+      .then((response) => {
+        cy.intercept("https://rancid-tomatillos.herokuapp.com/api/v2/movies", {
+          statusCode: 200,
+          body: response
+        })
+      })
+
     cy.visit('http://localhost:3000/')
     .get("form input[type=text]")
-      .type('rogue')
-      .should('have.value', 'rogue')
+      .type('peninsula')
+      .should('have.value', 'peninsula')
     .get("article").should('have.length', 1)
     .get("article img")
       .should('have.attr', 'src')
-      .should("include", "https://image.tmdb.org/t/p/original//uOw5JD8IlD546feZ6oxbIjvN66P.jpg")
+      .should("include", "https://image.tmdb.org/t/p/original//sy6DvAu72kjoseZEjocnm2ZZ09i.jpg")
     .get("article .movie-title")
-      .contains("Rogue")
+      .contains("Peninsula")
     .get("article .movie-rating")
-      .contains("Rating: 6.0")
+      .contains("Rating: 7.0")
     .get("article .movie-date")
-      .contains("Released: 2020-08-20")
+      .contains("Released: 2020-07-15")
     .focused().clear()
     // .should("have.value", "Rogue")
   })
 
   it('displays a single movie\'s details', () => {
+    cy.fixture("testSingleMovieData.json")
+      .then((response) => {
+        cy.intercept("https://rancid-tomatillos.herokuapp.com/api/v2/movies/581392", {
+          statusCode: 200,
+          body: response
+        })
+      })
+
     cy.visit('http://localhost:3000/')
     .get("article").eq(4).click()
     .url().should("eq", "http://localhost:3000/581392")
