@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import './Card.scss';
 
 const Card = ({movie}) => {
-  console.log(movie);
   return (
     <Link to={`/${movie.id}`}>
       <article className="card" id={movie.id} >

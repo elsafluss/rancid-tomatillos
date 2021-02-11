@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 function Form ({searchTerm, handleChange}) {
   return (
-    <form labelFor="search">
+    <form aria-label="search">
       <input 
         id="search"
         type="text"
