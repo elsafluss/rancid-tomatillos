@@ -1,8 +1,9 @@
 import './App.scss';
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Redirect, Switch, Route } from 'react-router-dom';
 import Header from '../Header/Header';
 import Modal from '../Modal/Modal';
+import Error from '../Error/Error';
 import CardContainer from '../CardContainer/CardContainer';
 import {getAllMovies } from '../util.js';
 
@@ -13,8 +14,13 @@ class App extends Component {
       movieData: [],
       movieID: NaN,
       modalShowing: false,
-      searchTerm: ''
+      searchTerm: '',
+      errorThrown: false
     }
+  }
+
+  pageNotFound = () => {
+    this.setState({errorThrown: true})
   }
 
   componentDidMount() {
@@ -22,7 +28,7 @@ class App extends Component {
     .then(movies => {
       this.setState({movieData: movies.movies})
     })
-    .catch(error => console.log(error))
+    .catch(error => this.pageNotFound())
   }
 
   getAllMovieData = (movieID) => {
@@ -47,31 +53,42 @@ class App extends Component {
   }
   
   render() {
-    return (
-      <div className="App">
-        <Header 
-          className="header"
-          searchMovies={this.searchMovies}
-          handleChange={this.handleChange}
-          searchTerm={this.state.searchTerm}
-        />
-
-        <Route exact path="/" render={() => 
-          <CardContainer
-            className="card-container" 
-            movieData={!this.searchMovies(this.state.searchTerm).length ? 
-              this.state.movieData : this.searchMovies(this.state.searchTerm)} 
+    if (this.state.errorThrown) {
+      // You can render any custom fallback UI
+      return <Error />
+    } else {
+      return (
+        <div className="App">
+          <Header 
+            className="header"
+            searchMovies={this.searchMovies}
+            handleChange={this.handleChange}
+            searchTerm={this.state.searchTerm}
           />
-        }/>
+          
+          <Switch>
+            <Route exact path="/" render={() => 
+              <CardContainer
+                className="card-container" 
+                movieData={!this.searchMovies(this.state.searchTerm).length ? 
+                  this.state.movieData : this.searchMovies(this.state.searchTerm)} 
+              />
+            }/>
 
-        <Route path='/:id' render={({ match }) => {
-          const id = match.params.id
-          return <Modal id={id} closeModal={this.closeModal} />
-            }
-          }
-        />
-      </div>
-    );
+            <Route path='/:id' render={({ match }) => {
+              const id = match.params.id
+
+              // if nothing comes back from modal, render the error
+              return <Modal id={id} closeModal={this.closeModal} pageNotFound={this.pageNotFound} />
+                }
+              }
+            />
+
+            <Route render={() => <Error />} />
+          </Switch>
+        </div>
+      );
+    }
   }
 }
 

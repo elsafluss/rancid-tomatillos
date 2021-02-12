@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import Error from '../Error/Error'
 import { getMovie } from '../util.js';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import './Modal.scss';
 
 class Modal extends Component {
@@ -14,14 +15,20 @@ class Modal extends Component {
 
   componentDidMount() {
     getMovie(this.props.id)
-    .then(movie => this.setState({foundMovie: movie.movie}))
-    .catch(error => console.log(error))
+    .then(movie => {
+      if (!movie.status) {
+        this.setState({foundMovie: movie.movie})
+      } else {
+        this.setState({foundMovie: null})
+      }
+    })
+    .catch(error => this.props.pageNotFound())
   }
 
   render() {
     const foundMovie = this.state.foundMovie
     return (
-      (!foundMovie) ? <p>No movie clicked yet</p> : 
+      (foundMovie === null) ? <Error /> : 
       <section className="modal">
         <img src={foundMovie.backdrop_path} alt="movie backdrop"/>
         <div className="m-data">
