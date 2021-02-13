@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Error from '../Error/Error'
+import Loading from '../Loading/Loading';
 import { getMovie } from '../util.js';
 import { Link } from 'react-router-dom';
 import './Modal.scss';
@@ -9,50 +9,51 @@ class Modal extends Component {
   constructor() {
     super();
     this.state = {
-      foundMovie: null
+      foundMovie: null,
+      loading: true
     }
   }
 
   componentDidMount() {
     getMovie(this.props.id)
     .then(movie => {
-      if (!movie.status) {
-        this.setState({foundMovie: movie.movie})
-      } else {
-        // Displays error, should display loading screen
-        this.props.pageNotFound()
-      }
+      this.setState({foundMovie: movie.movie, loading: false})
+      
     })
-    .catch(error => this.props.pageNotFound())
+    .catch(error => console.log(error))
   }
 
   render() {
     const foundMovie = this.state.foundMovie
-    return (
-      (foundMovie === null) ? <main className="loading">HEY</main> : 
-      <section className="modal">
-        <img src={foundMovie.backdrop_path} alt="movie backdrop"/>
-        <div className="m-data">
-          <p className="m-tagline">{foundMovie.tagline}</p>
-          <h2 className="m-title">{foundMovie.title}</h2>
-          <p className="m-date">Release Date: {foundMovie.release_date}</p>
-          <p className="m-rating">Average Rating: {foundMovie.average_rating.toFixed(1)}/10.0</p>
-          <p className="m-runtime">Runtime: {foundMovie.runtime} minutes</p>
-          <p className="m-overview">{foundMovie.overview}</p>
-          <div className="m-genre">
-            <p>Filed under:</p>
-              <ul>{foundMovie.genres.map(genre => <li>{genre}</li>)}</ul>
+    if (this.state.loading) {
+      return <Loading />
+    } else {
+      return (
+        (foundMovie === null) ? <main className="loading">HEY</main> : 
+        <section className="modal">
+          <img src={foundMovie.backdrop_path} alt="movie backdrop"/>
+          <div className="m-data">
+            <p className="m-tagline">{foundMovie.tagline}</p>
+            <h2 className="m-title">{foundMovie.title}</h2>
+            <p className="m-date">Release Date: {foundMovie.release_date}</p>
+            <p className="m-rating">Average Rating: {foundMovie.average_rating.toFixed(1)}/10.0</p>
+            <p className="m-runtime">Runtime: {foundMovie.runtime} minutes</p>
+            <p className="m-overview">{foundMovie.overview}</p>
+            <div className="m-genre">
+              <p>Filed under:</p>
+                <ul>{foundMovie.genres.map(genre => <li>{genre}</li>)}</ul>
+            </div>
+            {(!foundMovie.budget) ? <p className="m-budget">Budget not available</p> :
+              <p className="m-budget">Budget: ${foundMovie.budget.toLocaleString()}</p>}
+            {(!foundMovie.revenue) ? <p className="m-revenue">Revenue not available</p> :
+            <p className="m-revenue">Revenue: ${foundMovie.revenue.toLocaleString()}</p>}
           </div>
-          {(!foundMovie.budget) ? <p className="m-budget">Budget not available</p> :
-            <p className="m-budget">Budget: ${foundMovie.budget.toLocaleString()}</p>}
-          {(!foundMovie.revenue) ? <p className="m-revenue">Revenue not available</p> :
-          <p className="m-revenue">Revenue: ${foundMovie.revenue.toLocaleString()}</p>}
-        </div>
-        <Link to='/'>
-          <button>BACK TO HOME</button>
-        </Link>
-      </section>
-    )
+          <Link to='/'>
+            <button>BACK TO HOME</button>
+          </Link>
+        </section>
+      )
+    }
   }
 }
 

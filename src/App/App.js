@@ -8,7 +8,6 @@ import Loading from '../Loading/Loading';
 import CardContainer from '../CardContainer/CardContainer';
 import {getAllMovies } from '../util.js';
 
-// display a loading page while component fetch is happening?
 
 
 class App extends Component {
@@ -24,21 +23,16 @@ class App extends Component {
     }
   }
 
-  pageNotFound = () => {
-    console.log('brok')
-   
-  }
-
   componentDidMount() {
-    // to get loading screen
-    // should not deal with API
-    // loading page comes first
-    // WHEN we get data, render the card container
     getAllMovies()
     .then(movies => {
-        this.setState({movieData: movies.movies, loading: false})
+        if (!movies.status) {
+          this.setState({movieData: movies.movies, loading: false})
+        } else {
+          this.setState({errorThrown: true, loading: false})
+        }
     })
-    .catch(error => this.pageNotFound())
+    .catch(error => console.log(error))
   }
   
   getAllMovieData = (movieID) => {
@@ -63,10 +57,14 @@ class App extends Component {
   }
   
   render() {
+    if (this.state.errorThrown) {
+      <Error />
+    } else 
     if (this.state.loading) {
       return <Loading />
     } else {
       return (
+        
         <div className="App">
           <Header 
             className="header"
@@ -74,8 +72,11 @@ class App extends Component {
             handleChange={this.handleChange}
             searchTerm={this.state.searchTerm}
           />
-          
-          <Switch>
+        <Switch>
+            {/* { this.state.errorThrown && 
+              <Route exact path="/error" component={Error} />
+            } */}
+
             <Route exact path="/" render={() => 
               <CardContainer
                 className="card-container" 
@@ -87,13 +88,15 @@ class App extends Component {
             <Route path='/:id' render={({ match }) => {
               const id = match.params.id
 
-              // if nothing comes back from modal, render the error
-              return <Modal id={id} closeModal={this.closeModal} pageNotFound={this.pageNotFound} />
+              return <Modal id={id} closeModal={this.closeModal}  />
                 }
               }
             />
 
-            {/* <Route render={() => <Error />} /> */}
+            
+
+            <Route path='/error' render={() => <div>HERE IS AN ERROR</div>} />
+
           </Switch>
         </div>
       );

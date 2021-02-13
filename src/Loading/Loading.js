@@ -1,10 +1,8 @@
 import React from 'react';
 import './Loading.scss'
-import { Link } from 'react-router-dom';
 
 
-const Error = () => {
-    console.log("Loading!")
+const Loading = () => {
     return (
         <section className="loading-container">
             <h2>LOADING!</h2>
@@ -12,4 +10,4 @@ const Error = () => {
     )
 }
 
-export default Error;
+export default Loading;
