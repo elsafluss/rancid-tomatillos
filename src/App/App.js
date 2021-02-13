@@ -4,6 +4,7 @@ import { Redirect, Switch, Route } from 'react-router-dom';
 import Header from '../Header/Header';
 import Modal from '../Modal/Modal';
 import Error from '../Error/Error';
+import Loading from '../Loading/Loading';
 import CardContainer from '../CardContainer/CardContainer';
 import {getAllMovies } from '../util.js';
 
@@ -18,26 +19,24 @@ class App extends Component {
       movieID: NaN,
       modalShowing: false,
       searchTerm: '',
-      errorThrown: false
+      errorThrown: false,
+      loading: true
     }
   }
 
   pageNotFound = () => {
     console.log('brok')
-    return <main className="borked">HEY</main>
+   
   }
 
   componentDidMount() {
+    // to get loading screen
+    // should not deal with API
+    // loading page comes first
+    // WHEN we get data, render the card container
     getAllMovies()
     .then(movies => {
-      if (movies.movies.length) {
-        this.setState({movieData: movies.movies})
-      } else if (movies.status === 404) {
-
-        // Displays error, should display loading screen
-        this.pageNotFound()
-        // this.setState({movieData: []})
-      }
+        this.setState({movieData: movies.movies, loading: false})
     })
     .catch(error => this.pageNotFound())
   }
@@ -64,10 +63,9 @@ class App extends Component {
   }
   
   render() {
-    // if (this.state.errorThrown) {
-    //   // You can render any custom fallback UI
-    //   return <Error />
-    // } else {
+    if (this.state.loading) {
+      return <Loading />
+    } else {
       return (
         <div className="App">
           <Header 
@@ -100,7 +98,7 @@ class App extends Component {
         </div>
       );
     }
-  // }
+  }
 }
 
 export default App;
