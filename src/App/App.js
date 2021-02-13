@@ -23,16 +23,19 @@ class App extends Component {
     }
   }
 
+  throwError() {
+    this.setState({errorThrown: true, loading: false})
+  }
+
   componentDidMount() {
     getAllMovies()
     .then(movies => {
-        if (!movies.status) {
-          this.setState({movieData: movies.movies, loading: false})
-        } else {
-          this.setState({errorThrown: true, loading: false})
-        }
+      return this.setState({movieData: movies.movies, loading: false})
     })
-    .catch(error => console.log(error))
+    .catch(error => {
+      console.log(error)
+      this.throwError()
+    })
   }
   
   getAllMovieData = (movieID) => {
@@ -58,7 +61,7 @@ class App extends Component {
   
   render() {
     if (this.state.errorThrown) {
-      <Error />
+      return <Error />
     } else 
     if (this.state.loading) {
       return <Loading />

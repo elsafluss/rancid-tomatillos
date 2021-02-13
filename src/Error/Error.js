@@ -5,13 +5,10 @@ import { Link } from 'react-router-dom';
 
 
 const Error = () => {
-    console.log("Error!")
     return (
         <section className="error-container">
             <h2>Borked!</h2>
-          <Link to='/'>
-            <button>BACK TO HOME</button>
-          </Link>
+            <h2>Please check the URL</h2>
         </section>
     )
 }

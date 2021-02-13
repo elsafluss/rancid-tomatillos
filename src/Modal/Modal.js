@@ -14,13 +14,20 @@ class Modal extends Component {
     }
   }
 
+  goHome = () => {
+    return 
+  }
+
   componentDidMount() {
     getMovie(this.props.id)
     .then(movie => {
-      this.setState({foundMovie: movie.movie, loading: false})
+      return this.setState({foundMovie: movie.movie, loading: false})
       
     })
-    .catch(error => console.log(error))
+    .catch(error => {
+      // alert("Service not available. Please try again.")
+      console.log(error)
+    })
   }
 
   render() {
