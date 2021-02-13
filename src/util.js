@@ -1,7 +1,7 @@
 export const getAllMovies = () => {
   return fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
   .then(response => {
-    if (response.status >= 300) {
+    if (response.status >= 400) {
       return response
     } else {
       return response.json()

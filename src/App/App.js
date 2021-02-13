@@ -23,7 +23,8 @@ class App extends Component {
   }
 
   pageNotFound = () => {
-    this.setState({errorThrown: true})
+    console.log('brok')
+    return <main className="borked">HEY</main>
   }
 
   componentDidMount() {
@@ -31,9 +32,11 @@ class App extends Component {
     .then(movies => {
       if (movies.movies.length) {
         this.setState({movieData: movies.movies})
-      } else {
+      } else if (movies.status === 404) {
+
+        // Displays error, should display loading screen
         this.pageNotFound()
-        this.setState({movieData: []})
+        // this.setState({movieData: []})
       }
     })
     .catch(error => this.pageNotFound())
@@ -61,10 +64,10 @@ class App extends Component {
   }
   
   render() {
-    if (this.state.errorThrown) {
-      // You can render any custom fallback UI
-      return <Error />
-    } else {
+    // if (this.state.errorThrown) {
+    //   // You can render any custom fallback UI
+    //   return <Error />
+    // } else {
       return (
         <div className="App">
           <Header 
@@ -97,7 +100,7 @@ class App extends Component {
         </div>
       );
     }
-  }
+  // }
 }
 
 export default App;

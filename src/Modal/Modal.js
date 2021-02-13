@@ -19,7 +19,8 @@ class Modal extends Component {
       if (!movie.status) {
         this.setState({foundMovie: movie.movie})
       } else {
-        this.setState({foundMovie: null})
+        // Displays error, should display loading screen
+        this.props.pageNotFound()
       }
     })
     .catch(error => this.props.pageNotFound())
@@ -28,7 +29,7 @@ class Modal extends Component {
   render() {
     const foundMovie = this.state.foundMovie
     return (
-      (foundMovie === null) ? <Error /> : 
+      (foundMovie === null) ? <main className="loading">HEY</main> : 
       <section className="modal">
         <img src={foundMovie.backdrop_path} alt="movie backdrop"/>
         <div className="m-data">

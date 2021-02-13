@@ -14,6 +14,7 @@ const CardContainer = ({movieData}) => {
   })
 
   return (
+    !movies.length ? <main className="loading">HEY</main> : 
     <main>
       {movies}
     </main>
