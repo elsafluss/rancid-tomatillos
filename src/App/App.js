@@ -7,6 +7,9 @@ import Error from '../Error/Error';
 import CardContainer from '../CardContainer/CardContainer';
 import {getAllMovies } from '../util.js';
 
+// display a loading page while component fetch is happening?
+
+
 class App extends Component {
   constructor() {
     super();
@@ -26,11 +29,16 @@ class App extends Component {
   componentDidMount() {
     getAllMovies()
     .then(movies => {
-      this.setState({movieData: movies.movies})
+      if (movies.movies.length) {
+        this.setState({movieData: movies.movies})
+      } else {
+        this.pageNotFound()
+        this.setState({movieData: []})
+      }
     })
     .catch(error => this.pageNotFound())
   }
-
+  
   getAllMovieData = (movieID) => {
     const foundMovie = this.state.movieData.find(movie => movie.id.toString() === movieID);
     return foundMovie;
@@ -84,7 +92,7 @@ class App extends Component {
               }
             />
 
-            <Route render={() => <Error />} />
+            {/* <Route render={() => <Error />} /> */}
           </Switch>
         </div>
       );
