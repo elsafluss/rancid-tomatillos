@@ -1,4 +1,5 @@
 import React from 'react';
+import './Error.scss'
 
 const Error = () => {
     console.log("Error!")

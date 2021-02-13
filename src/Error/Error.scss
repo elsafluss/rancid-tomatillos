@@ -1,6 +1,17 @@
 @import '../styles/variables';
 
 section {
-  height: 100px;
+  height: 50vh;
   background-color: $highlight;
+  color: white;
+  padding: 1em;
+  color: #E3C4A0;
+  box-sizing: border-box;
+  display: grid;
+  justify-content: center;
+  width: 650px;
+  margin: auto;
+  gap: 1.2em;
+  position: relative;
+  top: 189px;
 }
