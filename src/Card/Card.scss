@@ -1,19 +1,29 @@
 @import '../styles/variables';
 
 .card {
-  box-shadow: 3px 3px 10px 1px $lowlight;
-  height: 400px;
-  width: 200px;
+  align-items: space-between;
+  background-color: $dark;
+  box-shadow: 3px 3px 8px 1px $lowlight;
+  color: $lowlight;
   display: flex;
   flex-direction: column;
-  align-items: space-between;
+  height: 400px;
   justify-content: space-between;
-  background-color: $dark;
+  width: 200px;
+}
+
+.movie-title {
+  color: $light;
+  font-size: large;
+  font-weight: 600;
+  text-align: center;
+  text-shadow: 1px 1px $lowlight;
 }
 
 .card:hover {
+  background-color: $highlight;
+  box-shadow: 3px 3px 8px 1px $highlight;
   cursor: pointer;
-  box-shadow: 3px 3px 10px 1px $highlight;
 }
 
 .thumbnail {
@@ -21,18 +31,9 @@
   width: 100%;
 }
 
-.movie-title {
-  text-align: center;
-  font-weight: 600;
-}
-
 .movie-rating,
 .movie-date {
-  line-height: 1.6;
   font-size: smaller;
-  padding: 0 .5em;
-}
-
-a {
-  color: $light;
+  font-weight: 500;
+  margin: 0 auto .5em;
 }
