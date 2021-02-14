@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Loading from '../Loading/Loading';
+import Error from '../Error/Error';
 import { getMovie } from '../util.js';
 import { Link } from 'react-router-dom';
 import './Modal.scss';
@@ -10,29 +11,31 @@ class Modal extends Component {
     super();
     this.state = {
       foundMovie: null,
-      loading: true
+      loading: true,
+      errorThrown: false
     }
   }
 
-  goHome = () => {
-    return 
+  throwError() {
+    this.setState({errorThrown: true, loading: false})
   }
 
   componentDidMount() {
     getMovie(this.props.id)
     .then(movie => {
       return this.setState({foundMovie: movie.movie, loading: false})
-      
     })
     .catch(error => {
-      // alert("Service not available. Please try again.")
       console.log(error)
+      this.throwError()
     })
   }
 
   render() {
     const foundMovie = this.state.foundMovie
-    if (this.state.loading) {
+    if (this.state.errorThrown) {
+      return <Error />
+    } else if (this.state.loading) {
       return <Loading />
     } else {
       return (
