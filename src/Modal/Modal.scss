@@ -1,61 +1,58 @@
 @import '../styles/variables';
 
-.modal-container {
-  align-items: center;
-  background-color: gray;
-  display: flex;
-  height: 90vh;
-  justify-content: center;
-  margin: auto;
-    width: 660px;
-
-}
-
 .modal {
   align-items: center;
-  background-color: $light;
-  border-radius: 3px;
-  top: 189px;
-  color: black;
-  font-size: 100%;
-  height: 700px;
+  background-color: $dark;
+  color: $light;
+  display: grid;
+  height: auto;
   justify-content: center;
   line-height: 1.6;
-  margin: auto;
+  margin: 0;
+  padding: 0;
   position: relative;
+  top: 200px;
   text-align: center;
-    width: 660px;
-
+  width: 693px;
   z-index: .5;
 }
 
+button {
+  background-color: $light;
+  padding: .5em 1em;
+  border-radius: 5px;
+  &:hover {
+    background-color: $highlight;
+    color: $light;
+    cursor: pointer;
+  }
+  :focus {
+    background-color: $highlight;
+  }
+}
+
 .modal img {
-  border: black;
   grid-column: 1 / 4;
-  box-shadow: -5px -5px 6px $dark;
+  box-shadow: -4px -4px 6px $lowlight;
   height: auto;
-  width: 500px;
-  margin: 2em;
-  margin-bottom: 0;
-  position: relative;
+  width: 450px;
+  margin: 1em auto;
 }
 
 .m-data {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: .5em;
-  margin: 0 5.8em;
-  z-index: 1;
+  margin: 1em auto;
+  width: 600px;
+  position: relative;
 }
 
+.m-title,
 .m-tagline {
+  margin: 0;
   grid-column: 1 / 4;
-  text-align: left;
-}
-
-.m-title {
-  margin-top: 0;
-  grid-column: 1 / 4;
+  text-shadow: 1px 1px $highlight;
 }
 
 .m-date,
@@ -80,6 +77,10 @@
   grid-column: 1 / 4;
   text-align: left;
   width: 100%;
+}
+
+.m-genre-title {
+  grid-column: 2 / span 1;
 }
 
 .m-genre ul {
