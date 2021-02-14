@@ -1,10 +1,14 @@
 import './App.scss';
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Header from '../Header/Header';
 import Modal from '../Modal/Modal';
+import Error from '../Error/Error';
+import Loading from '../Loading/Loading';
 import CardContainer from '../CardContainer/CardContainer';
 import {getAllMovies } from '../util.js';
+
+
 
 class App extends Component {
   constructor() {
@@ -13,18 +17,27 @@ class App extends Component {
       movieData: [],
       movieID: NaN,
       modalShowing: false,
-      searchTerm: ''
+      searchTerm: '',
+      errorThrown: false,
+      loading: true
     }
+  }
+
+  throwError() {
+    this.setState({errorThrown: true, loading: false})
   }
 
   componentDidMount() {
     getAllMovies()
     .then(movies => {
-      this.setState({movieData: movies.movies})
+      return this.setState({movieData: movies.movies, loading: false})
     })
-    .catch(error => console.log(error))
+    .catch(error => {
+      console.log(error)
+      this.throwError()
+    })
   }
-
+  
   getAllMovieData = (movieID) => {
     const foundMovie = this.state.movieData.find(movie => movie.id.toString() === movieID);
     return foundMovie;
@@ -47,31 +60,43 @@ class App extends Component {
   }
   
   render() {
-    return (
-      <div className="App">
-        <Header 
-          className="header"
-          searchMovies={this.searchMovies}
-          handleChange={this.handleChange}
-          searchTerm={this.state.searchTerm}
-        />
-
-        <Route exact path="/" render={() => 
-          <CardContainer
-            className="card-container" 
-            movieData={!this.searchMovies(this.state.searchTerm).length ? 
-              this.state.movieData : this.searchMovies(this.state.searchTerm)} 
+    if (this.state.errorThrown) {
+      return <Error />
+    } else if (this.state.loading) {
+      return <Loading />
+    } else {
+      return (
+        
+        <div className="App">
+          <Header 
+            className="header"
+            searchMovies={this.searchMovies}
+            handleChange={this.handleChange}
+            searchTerm={this.state.searchTerm}
           />
-        }/>
+        <Switch>
+            <Route exact path="/" render={() => 
+              <CardContainer
+                className="card-container" 
+                movieData={!this.searchMovies(this.state.searchTerm).length ? 
+                  this.state.movieData : this.searchMovies(this.state.searchTerm)} 
+              />
+            }/>
 
-        <Route path='/:id' render={({ match }) => {
-          const id = match.params.id
-          return <Modal id={id} closeModal={this.closeModal} />
-            }
-          }
-        />
-      </div>
-    );
+            <Route path='/:id' render={({ match }) => {
+              const id = match.params.id
+
+              return <Modal id={id} closeModal={this.closeModal}  />
+                }
+              }
+            />
+
+            <Route path='/error' render={() => <div>HERE IS AN ERROR</div>} />
+
+          </Switch>
+        </div>
+      );
+    }
   }
 }
 

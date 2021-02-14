@@ -1,20 +1,17 @@
-main {
-  // border: 2px solid blue;
+@import '../styles/variables';
+
+section {
+  height: 50vh;
+  background-color: $highlight;
+  color: white;
   padding: 1em;
   color: #E3C4A0;
   box-sizing: border-box;
   display: grid;
   justify-content: center;
-  height: auto;
   width: 650px;
   margin: auto;
   gap: 1.2em;
   position: relative;
   top: 189px;
-  row-gap: 2em;
-  grid-template-columns: 1fr 1fr 1fr;
-}
-
-.loading {
-  background-color: white;
 }

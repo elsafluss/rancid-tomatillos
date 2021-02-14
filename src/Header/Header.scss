@@ -3,6 +3,7 @@
 header {
   // padding-left: 3em;
   color: $highlight;
+  
   border-bottom: $highlight 5px solid;
   display: flex;
   flex-direction: column;
@@ -18,4 +19,9 @@ header {
   background-size: contain;
   text-align: center;
   text-shadow: 2px 2px $dark;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
 }
