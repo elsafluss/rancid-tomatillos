@@ -1,15 +1,10 @@
 @import "../styles/variables";
 
 .App {
-  width: 95vw;
+  width: 693px;
   font-family: $font;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  // overflow: hidden;
-}
-
-.borked {
-  background-color: yellow;
 }

@@ -1,24 +1,29 @@
 @import '../styles/variables';
 
 header {
-  // padding-left: 3em;
-  color: $highlight;
-  
-  border-bottom: $highlight 5px solid;
+  border: $lowlight 7px double;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 660px;
+  width: 693px;
   position: fixed;
   height: 189px;
   z-index: 1;
-  background-image: url("../background.png");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: contain;
+  background: $dark url("../background.png") no-repeat fixed center;
+  background-size: 693px 189px;
   text-align: center;
   text-shadow: 2px 2px $dark;
+  font-size: x-large;
+}
+
+h1 {
+  border: $lowlight 7px dotted;
+  box-sizing:border-box;
+  padding: .5em .8em;
+  width: 500px;
+  color: $highlight;
+  background-color: $light;
 }
 
 a {

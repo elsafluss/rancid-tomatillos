@@ -7,7 +7,7 @@ function Form ({searchTerm, handleChange}) {
       <input 
         id="search"
         type="text"
-        placeholder="Search for a movie"
+        placeholder="Search by title"
         value={searchTerm}
         onChange={(event) => handleChange(event)}
       />
