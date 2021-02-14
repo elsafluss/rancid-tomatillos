@@ -62,8 +62,7 @@ class App extends Component {
   render() {
     if (this.state.errorThrown) {
       return <Error />
-    } else 
-    if (this.state.loading) {
+    } else if (this.state.loading) {
       return <Loading />
     } else {
       return (
@@ -76,10 +75,6 @@ class App extends Component {
             searchTerm={this.state.searchTerm}
           />
         <Switch>
-            {/* { this.state.errorThrown && 
-              <Route exact path="/error" component={Error} />
-            } */}
-
             <Route exact path="/" render={() => 
               <CardContainer
                 className="card-container" 
@@ -95,8 +90,6 @@ class App extends Component {
                 }
               }
             />
-
-            
 
             <Route path='/error' render={() => <div>HERE IS AN ERROR</div>} />
 
