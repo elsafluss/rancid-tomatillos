@@ -1,29 +1,29 @@
 @import '../styles/variables';
 
 header {
+  align-items: center;
+  background-color: $dark;
+  background-size: 693px 189px;
   border: $lowlight 7px double;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 693px;
-  position: fixed;
+  font-size: x-large;
   height: 189px;
-  z-index: 1;
-  background: $dark url("../background.png") no-repeat fixed center;
-  background-size: 693px 189px;
+  justify-content: space-between;
+  position: fixed;
   text-align: center;
   text-shadow: 2px 2px $dark;
-  font-size: x-large;
+  width: 693px;
+  z-index: 1;
 }
 
 h1 {
+  background-color: $light;
   border: $lowlight 7px dotted;
   box-sizing:border-box;
+  color: $highlight;
   padding: .5em .8em;
   width: 500px;
-  color: $highlight;
-  background-color: $light;
 }
 
 a {

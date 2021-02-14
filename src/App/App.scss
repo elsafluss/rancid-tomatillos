@@ -1,10 +1,10 @@
 @import "../styles/variables";
 
 .App {
-  width: 693px;
-  font-family: $font;
+  align-items: center;
   display: flex;
   flex-direction: column;
+  font-family: $font;
   justify-content: flex-start;
-  align-items: center;
+  width: 693px;
 }

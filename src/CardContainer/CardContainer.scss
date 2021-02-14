@@ -1,20 +1,19 @@
-main {
-  // border: 2px solid blue;
-  padding: 1em;
-  color: #E3C4A0;
-  box-sizing: border-box;
-  display: grid;
-  justify-content: center;
-  height: auto;
-  width: 650px;
-  margin: auto;
-  gap: 1.2em;
-  position: relative;
-  top: 189px;
-  row-gap: 2em;
-  grid-template-columns: 1fr 1fr 1fr;
-}
+@import "../styles/variables";
 
-.loading {
-  background-color: white;
+main {
+  border: $lowlight 8px dotted;
+  border-top: none;
+  box-sizing: border-box;
+  color: $light;
+  display: grid;
+  gap: 1.7em;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: auto;
+  justify-content: center;
+  margin: auto;
+  padding: 1em 2em 1em 2em;
+  position: relative;
+  row-gap: 2em;
+  top: 205px;
+  width: 690px;
 }
