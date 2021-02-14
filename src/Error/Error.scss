@@ -1,17 +1,35 @@
 @import '../styles/variables';
 
 section {
-  height: 50vh;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
   background-color: $highlight;
-  color: white;
+  color: $light;
   padding: 1em;
-  color: #E3C4A0;
   box-sizing: border-box;
-  display: grid;
-  justify-content: center;
-  width: 650px;
+  width: 693px;
   margin: auto;
-  gap: 1.2em;
   position: relative;
   top: 189px;
+}
+
+.borked-gif {
+  height: 200px;
+  width: auto;
+  margin: 1em auto 0 auto;
+}
+
+.borked-title {
+  margin: 1em auto 0 auto;
+}
+
+.borked-link {
+  text-align: center;
+  margin: 1em;
+  line-height: 1.6;
+  color: $light;
+  :hover {
+    cursor: pointer;
+  }
 }
