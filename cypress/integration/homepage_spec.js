@@ -1,4 +1,3 @@
-// switch over test contents to match the updated website
 // add tests for error and loading screens
 // move search bar
 // hide search bar when on modal and when on error page (maybe loading page if easy)
