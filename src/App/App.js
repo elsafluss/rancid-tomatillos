@@ -1,6 +1,6 @@
 import './App.scss';
 import React, { Component } from 'react';
-import { Redirect, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Header from '../Header/Header';
 import Modal from '../Modal/Modal';
 import Error from '../Error/Error';

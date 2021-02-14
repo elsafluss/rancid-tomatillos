@@ -51,7 +51,7 @@ class Modal extends Component {
             <p className="m-overview">{foundMovie.overview}</p>
             <div className="m-genre">
               <p>Filed under:</p>
-                <ul>{foundMovie.genres.map(genre => <li>{genre}</li>)}</ul>
+                <ul>{foundMovie.genres.map(genre => <li key={genre}>{genre}</li>)}</ul>
             </div>
             {(!foundMovie.budget) ? <p className="m-budget">Budget not available</p> :
               <p className="m-budget">Budget: ${foundMovie.budget.toLocaleString()}</p>}

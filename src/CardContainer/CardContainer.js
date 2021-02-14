@@ -5,7 +5,7 @@ import Card from '../Card/Card';
 
 const CardContainer = ({movieData}) => {
   const movies = movieData.map(movie => {
-    return <Card 
+    return <Card
       className="card" 
       key={movie.id}
       id={movie.id}
