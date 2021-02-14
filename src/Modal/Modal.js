@@ -7,17 +7,14 @@ import { Link } from 'react-router-dom';
 import './Modal.scss';
 
 class Modal extends Component {
-  constructor() {
-    super();
+  constructor({throwError}) {
+    super(throwError);
     this.state = {
       foundMovie: null,
       loading: true,
-      errorThrown: false
+      modalError: false,
+      modalSearch: false
     }
-  }
-
-  throwError() {
-    this.setState({errorThrown: true, loading: false})
   }
 
   componentDidMount() {
@@ -26,14 +23,13 @@ class Modal extends Component {
       return this.setState({foundMovie: movie.movie, loading: false})
     })
     .catch(error => {
-      console.log(error)
-      this.throwError()
+      this.props.throwError()
     })
   }
 
   render() {
     const foundMovie = this.state.foundMovie
-    if (this.state.errorThrown) {
+    if (this.state.modalError) {
       return <Error />
     } else if (this.state.loading) {
       return <Loading />

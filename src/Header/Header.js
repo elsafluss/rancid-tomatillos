@@ -4,10 +4,12 @@ import PropTypes from 'prop-types'
 import './Header.scss';
 import Form from '../Form/Form'
 
-const Header = ({searchTerm, handleChange}) => {
+const Header = ({searchTerm, handleChange, showSearch}) => {
+
   return (
     <header>
-      <Form searchTerm={searchTerm} handleChange={handleChange} />
+        {showSearch && <Form searchTerm={searchTerm} handleChange={handleChange} />}
+
       <Link to="/">
         <h1>
           Randy's Totoos

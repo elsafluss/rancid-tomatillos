@@ -19,12 +19,13 @@ class App extends Component {
       modalShowing: false,
       searchTerm: '',
       errorThrown: false,
-      loading: true
+      loading: true,
+      showSearch: true
     }
   }
 
-  throwError() {
-    this.setState({errorThrown: true, loading: false})
+  throwError = () => {
+    this.setState({errorThrown: true, loading: false, showSearch: false})
   }
 
   componentDidMount() {
@@ -41,10 +42,6 @@ class App extends Component {
   getAllMovieData = (movieID) => {
     const foundMovie = this.state.movieData.find(movie => movie.id.toString() === movieID);
     return foundMovie;
-  }
-  
-  closeModal = () => {
-    this.setState({modalShowing: false});
   }
   
   searchMovies = () => {
@@ -73,6 +70,7 @@ class App extends Component {
             searchMovies={this.searchMovies}
             handleChange={this.handleChange}
             searchTerm={this.state.searchTerm}
+            showSearch={this.state.showSearch}
           />
         <Switch>
             <Route exact path="/" render={() => 
@@ -86,12 +84,10 @@ class App extends Component {
             <Route path='/:id' render={({ match }) => {
               const id = match.params.id
 
-              return <Modal id={id} closeModal={this.closeModal}  />
+              return <Modal id={id} throwError={this.throwError} />
                 }
               }
             />
-
-            <Route path='/error' render={() => <div>HERE IS AN ERROR</div>} />
 
           </Switch>
         </div>
