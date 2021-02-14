@@ -7,11 +7,11 @@ import Form from '../Form/Form'
 const Header = ({searchTerm, handleChange, showSearch}) => {
 
   return (
-    <header>
+    <header className="main-header">
         {showSearch && <Form searchTerm={searchTerm} handleChange={handleChange} />}
 
-      <Link to="/">
-        <h1>
+      <Link to="/" className="header-link">
+        <h1 className="header-title">
           Randy's Totoos
         </h1>
       </Link>

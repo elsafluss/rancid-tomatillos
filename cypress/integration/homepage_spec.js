@@ -1,7 +1,5 @@
-// add tests for error and loading screens
-// move search bar
-// hide search bar when on modal and when on error page (maybe loading page if easy)
-
+// hide search bar when on modal
+// fix error / modal CSS
 // responsiveness
 // deploy and readme
 
