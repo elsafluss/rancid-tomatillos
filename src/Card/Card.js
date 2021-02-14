@@ -12,10 +12,10 @@ const Card = ({movie}) => {
           {movie.title}
         </p>
         <p className="movie-rating">
-          Rating: {movie.average_rating.toFixed(1)}
+          {`Rating: ${movie.average_rating.toFixed(1)}/10.0`}
         </p>
         <p className="movie-date">
-          Released: {movie.release_date}
+          Released on {movie.release_date}
         </p>
       </article>
     </Link>

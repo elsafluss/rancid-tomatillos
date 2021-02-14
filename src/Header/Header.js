@@ -6,12 +6,11 @@ import Form from '../Form/Form'
 
 const Header = ({searchTerm, handleChange}) => {
   return (
-<header>
+    <header>
       <Form searchTerm={searchTerm} handleChange={handleChange} />
       <Link to="/">
         <h1>
-          Rancid <br></br>
-          Tomatillos
+          Randy's Totoos
         </h1>
       </Link>
     </header>
