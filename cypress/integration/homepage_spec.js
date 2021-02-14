@@ -1,3 +1,12 @@
+// switch over test contents to match the updated website
+// add tests for error and loading screens
+// move search bar
+// hide search bar when on modal and when on error page (maybe loading page if easy)
+
+// responsiveness
+// deploy and readme
+
+
 describe('As a user', () => {
   it('displays the home page', () => {
     cy.fixture("testMovieData.json")
@@ -10,7 +19,7 @@ describe('As a user', () => {
 
     cy.visit('http://localhost:3000/')
     cy
-    .get("header").should("have.text", "Rancid Tomatillos")
+    .get("header").should("have.text", "Randy's Totoos")
 
     .get("article").should('have.length', 2)
     .get("article").within(() => {
@@ -40,9 +49,9 @@ describe('As a user', () => {
     .get("article .movie-title")
       .contains("Peninsula")
     .get("article .movie-rating")
-      .contains("Rating: 7.0")
+      .contains("Rating: 7.0/10.0")
     .get("article .movie-date")
-      .contains("Released: 2020-07-15")
+      .contains("Released on 2020-07-15")
     .focused().clear()
     // .should("have.value", "Rogue")
   })
