@@ -1,4 +1,5 @@
 import React from 'react';
+import './Form.scss'
 import PropTypes from 'prop-types'
 
 function Form ({searchTerm, handleChange}) {
