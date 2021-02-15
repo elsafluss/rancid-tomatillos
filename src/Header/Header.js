@@ -10,7 +10,7 @@ const Header = ({searchTerm, handleChange, showSearch}) => {
     <header className="main-header">
         {showSearch && <Form searchTerm={searchTerm} handleChange={handleChange} />}
 
-      <Link to="/" className="header-link">
+      <Link to="/rancid-tomatillos" className="header-link">
         <h1 className="header-title">
           Randy's Totoos
         </h1>

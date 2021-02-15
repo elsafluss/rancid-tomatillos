@@ -68,7 +68,7 @@ class App extends Component {
         <div className="App">
           
           <Switch>
-            <Route exact path="/" render={() =>
+            <Route exact path="/rancid-tomatillos" render={() =>
               <> 
                 <Header 
                   className="header"

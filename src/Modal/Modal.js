@@ -53,7 +53,7 @@ class Modal extends Component {
               <p className="m-budget">Budget: ${foundMovie.budget.toLocaleString()}</p>}
             {(!foundMovie.revenue) ? <p className="m-revenue">Revenue not available</p> :
             <p className="m-revenue">Revenue: ${foundMovie.revenue.toLocaleString()}</p>}
-          <Link to='/'>
+          <Link to="/rancid-tomatillos">
             <button>BACK TO HOME</button>
           </Link>
           </div>
