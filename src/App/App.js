@@ -52,6 +52,7 @@ class App extends Component {
   }
   
   handleChange = event => {
+    event.preventDefault();
     this.setState({searchTerm: event.target.value})
     this.searchMovies(event.target.value)
   }
