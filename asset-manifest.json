@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/rancid-tomatillos/static/css/main.0a9573dd.chunk.css",
-    "main.js": "/rancid-tomatillos/static/js/main.80cce37d.chunk.js",
-    "main.js.map": "/rancid-tomatillos/static/js/main.80cce37d.chunk.js.map",
+    "main.js": "/rancid-tomatillos/static/js/main.af2f3ae5.chunk.js",
+    "main.js.map": "/rancid-tomatillos/static/js/main.af2f3ae5.chunk.js.map",
     "runtime-main.js": "/rancid-tomatillos/static/js/runtime-main.333d3443.js",
     "runtime-main.js.map": "/rancid-tomatillos/static/js/runtime-main.333d3443.js.map",
     "static/js/2.08333856.chunk.js": "/rancid-tomatillos/static/js/2.08333856.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.333d3443.js",
     "static/js/2.08333856.chunk.js",
     "static/css/main.0a9573dd.chunk.css",
-    "static/js/main.80cce37d.chunk.js"
+    "static/js/main.af2f3ae5.chunk.js"
   ]
 }
