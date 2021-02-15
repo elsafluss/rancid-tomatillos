@@ -5,7 +5,7 @@ import './Card.scss';
 
 const Card = ({movie}) => {
   return (
-    <Link to={`/${movie.id}`}>
+    <Link to={`/${movie.id}`} aria-label={movie.id}>
       <article className="card" id={movie.id} >
         <img className="thumbnail" src={movie.poster_path} alt="thumbnail"/>
         <p className="movie-title">
