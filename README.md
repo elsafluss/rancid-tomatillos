@@ -10,7 +10,8 @@
 ## Introduction
 
 Which movies were released in 2020? Were they any good? Wonder no more! Randy's Totoos* is here to help!
-*legally distinct from Rancid Tomatillos
+
+*legally distinct from Rotten Tomatoes
 
 When you visit the site, you're transported to the distant past, when people went to movie theaters. View the posters for all movies released in 2020 and click on each of them for more details.
 
