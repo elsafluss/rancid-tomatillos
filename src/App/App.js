@@ -65,26 +65,39 @@ class App extends Component {
       return (
         
         <div className="App">
-          <Header 
-            className="header"
-            searchMovies={this.searchMovies}
-            handleChange={this.handleChange}
-            searchTerm={this.state.searchTerm}
-            showSearch={this.state.showSearch}
-          />
+          
           <Switch>
-            <Route exact path="/" render={() => 
-              <CardContainer
-                className="card-container" 
-                movieData={!this.searchMovies(this.state.searchTerm).length ? 
-                  this.state.movieData : this.searchMovies(this.state.searchTerm)} 
-              />
+            <Route exact path="/" render={() =>
+              <> 
+                <Header 
+                  className="header"
+                  searchMovies={this.searchMovies}
+                  handleChange={this.handleChange}
+                  searchTerm={this.state.searchTerm}
+                  showSearch={this.state.showSearch}
+                />
+                <CardContainer
+                  className="card-container" 
+                  movieData={!this.searchMovies(this.state.searchTerm).length ? 
+                    this.state.movieData : this.searchMovies(this.state.searchTerm)} 
+                />
+              </>
             }/>
 
             <Route path='/:id' render={({ match }) => {
               const id = match.params.id
-
-              return <Modal id={id} throwError={this.throwError} />
+              return (
+              <>
+                <Header 
+                  className="header"
+                  searchMovies={this.searchMovies}
+                  handleChange={this.handleChange}
+                  searchTerm={this.state.searchTerm}
+                  showSearch={false}
+                />
+                <Modal id={id} throwError={this.throwError} />
+              </>
+              )
             }}/>
           </Switch>
         </div>
