@@ -41,7 +41,7 @@ Upon navigating to our landing page, users see the available movies.
 </details>
 
 #### Selecting a Movie
-A user can enter a partial or full movie title into the search bar, then select a movie to gain further details on it.
+A user can enter a partial or full movie title into the search bar, then select a movie to gain further details on it. Once a user is done reading the film's details, they then can click the home icon to return the the landing page.
 
 <details>
 <summary>Example of search experience</summary>
@@ -50,7 +50,7 @@ A user can enter a partial or full movie title into the search bar, then select 
 </details>
 
 #### Viewing on mobile
-Once a user is done reading the film's details, they then can click the home icon to return the the landing page.
+The site has also been designed to be accessible on mobile devices.
 
 <details>
 <summary>Example of Mobile Experience</summary>
