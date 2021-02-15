@@ -13,7 +13,7 @@
   position: relative;
   top: 200px;
   text-align: center;
-  width: 693px;
+  width: 90vw;
   z-index: .5;
 }
 
@@ -35,17 +35,20 @@ button {
   grid-column: 1 / 4;
   box-shadow: -4px -4px 6px $lowlight;
   height: auto;
-  width: 450px;
+  width: 75vw;
   margin: 1em auto;
 }
 
 .m-data {
+  width: 80vw;
+  border: $lowlight 8px dotted;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: .5em;
   margin: 1em auto;
-  width: 600px;
+  // width: 600px;
   position: relative;
+  padding: 1rem;
 }
 
 .m-title,
@@ -84,13 +87,37 @@ button {
 }
 
 .m-genre ul {
+  width: 100%;
   list-style: none;
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   text-align: left;
 }
 
 .show {
   opacity: 1;
   pointer-events: auto;
+}
+
+@media only screen and (min-width: 800px) {
+  .modal img {
+    grid-column: 1 / 4;
+    box-shadow: -4px -4px 6px $lowlight;
+    height: auto;
+    width: 450px;
+    margin: 1em auto;
+  }
+
+
+  .m-data {
+    border: $lowlight 8px dotted;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: .5em;
+    margin: 1em auto;
+    width: 600px;
+    position: relative;
+    padding: 1rem;
+  }
 }

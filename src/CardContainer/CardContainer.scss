@@ -1,19 +1,27 @@
 @import "../styles/variables";
 
+// MOBILE / TABLET VIEW
 main {
+  position: relative;
+  top: 205px;
   border: $lowlight 8px dotted;
   border-top: none;
   box-sizing: border-box;
   color: $light;
   display: grid;
   gap: 1.7em;
-  grid-template-columns: 1fr 1fr 1fr;
-  height: auto;
-  justify-content: center;
-  margin: auto;
-  padding: 1em 2em 1em 2em;
-  position: relative;
-  row-gap: 2em;
-  top: 205px;
-  width: 690px;
+  grid-template-columns: 1fr;
+}
+
+// DESKTOP VIEW
+@media only screen and (min-width: 800px) {
+  main {
+    grid-template-columns: 1fr 1fr 1fr;
+    height: auto;
+    justify-content: center;
+    margin: auto;
+    padding: 1em 2em 1em 2em;
+    row-gap: 2em;
+    width: 690px;
+  }
 }

@@ -1,5 +1,6 @@
 @import '../styles/variables';
 
+// MOBILE / TABLET VIEW
 .main-header {
   align-items: center;
   background-color: $dark;
@@ -7,13 +8,13 @@
   border: $lowlight 7px double;
   display: flex;
   flex-direction: column;
-  font-size: x-large;
+  font-size: small;
   height: 189px;
   justify-content: space-between;
   position: fixed;
   text-align: center;
   text-shadow: 2px 2px $dark;
-  width: 693px;
+  width: 90vw;
   z-index: 1;
 }
 
@@ -23,10 +24,28 @@
   box-sizing:border-box;
   color: $highlight;
   padding: .5em .8em;
-  width: 500px;
+  width: 70vw;
 }
 
 .header-link {
   cursor: pointer;
   text-decoration: none;
+}
+
+// DESKTOP VIEW
+@media only screen and (min-width: 800px) {
+  .main-header {
+    font-size: x-large;
+    height: 189px;
+    width: 693px;
+  }
+
+  .header-title {
+    width: 500px;
+  }
+
+  .header-link {
+    cursor: pointer;
+    text-decoration: none;
+  }
 }

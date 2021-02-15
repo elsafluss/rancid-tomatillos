@@ -72,7 +72,7 @@ class App extends Component {
             searchTerm={this.state.searchTerm}
             showSearch={this.state.showSearch}
           />
-        <Switch>
+          <Switch>
             <Route exact path="/" render={() => 
               <CardContainer
                 className="card-container" 
@@ -85,10 +85,7 @@ class App extends Component {
               const id = match.params.id
 
               return <Modal id={id} throwError={this.throwError} />
-                }
-              }
-            />
-
+            }}/>
           </Switch>
         </div>
       );
