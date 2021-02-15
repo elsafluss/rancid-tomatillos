@@ -1,5 +1,6 @@
 @import '../styles/variables';
 
+// MOBILE / TABLET VIEW
 .card {
   align-items: space-between;
   background-color: $dark;
@@ -7,14 +8,13 @@
   color: $lowlight;
   display: flex;
   flex-direction: column;
-  height: 400px;
   justify-content: space-between;
-  width: 200px;
+  width: 80vw;
+  font-size: xx-large;
 }
 
 .movie-title {
   color: $light;
-  font-size: large;
   font-weight: 600;
   text-align: center;
   text-shadow: 1px 1px $lowlight;
@@ -28,12 +28,55 @@
 
 .thumbnail {
   margin: 0;
-  width: 100%;
+  width: 90%;
+  justify-content: center;
+  align-self: center;
 }
 
 .movie-rating,
 .movie-date {
-  font-size: smaller;
+  font-size: large;
   font-weight: 500;
   margin: 0 auto .5em;
+}
+
+// DESKTOP VIEW
+@media only screen and (min-width: 800px) {
+  .card {
+    align-items: space-between;
+    background-color: $dark;
+    box-shadow: 3px 3px 8px 1px $lowlight;
+    color: $lowlight;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    justify-content: space-between;
+    width: 200px;
+  }
+
+  .movie-title {
+    color: $light;
+    font-size: large;
+    font-weight: 600;
+    text-align: center;
+    text-shadow: 1px 1px $lowlight;
+  }
+
+  .card:hover {
+    background-color: $highlight;
+    box-shadow: 3px 3px 8px 1px $highlight;
+    cursor: pointer;
+  }
+
+  .thumbnail {
+    margin: 0;
+    width: 100%;
+  }
+
+  .movie-rating,
+  .movie-date {
+    font-size: small;
+    font-weight: 500;
+    margin: 0 auto .5em;
+  }
 }

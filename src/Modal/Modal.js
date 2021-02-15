@@ -7,17 +7,14 @@ import { Link } from 'react-router-dom';
 import './Modal.scss';
 
 class Modal extends Component {
-  constructor() {
-    super();
+  constructor({throwError}) {
+    super(throwError);
     this.state = {
       foundMovie: null,
       loading: true,
-      errorThrown: false
+      modalError: false,
+      modalSearch: false
     }
-  }
-
-  throwError() {
-    this.setState({errorThrown: true, loading: false})
   }
 
   componentDidMount() {
@@ -26,14 +23,13 @@ class Modal extends Component {
       return this.setState({foundMovie: movie.movie, loading: false})
     })
     .catch(error => {
-      console.log(error)
-      this.throwError()
+      this.props.throwError()
     })
   }
 
   render() {
     const foundMovie = this.state.foundMovie
-    if (this.state.errorThrown) {
+    if (this.state.modalError) {
       return <Error />
     } else if (this.state.loading) {
       return <Loading />
@@ -41,9 +37,10 @@ class Modal extends Component {
       return (
         (foundMovie === null) ? <main className="loading">HEY</main> : 
         <section className="modal">
+  
+          <img src={foundMovie.backdrop_path} alt="movie backdrop"/>
           <h2 className="m-title">{foundMovie.title}</h2>
           <p className="m-tagline">{foundMovie.tagline}</p>
-          <img src={foundMovie.backdrop_path} alt="movie backdrop"/>
           <div className="m-data">
             <p className="m-overview">{foundMovie.overview}</p>
             <p className="m-date">Release Date: {foundMovie.release_date}</p>
