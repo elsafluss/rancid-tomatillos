@@ -6,9 +6,7 @@ import Modal from '../Modal/Modal';
 import Error from '../Error/Error';
 import Loading from '../Loading/Loading';
 import CardContainer from '../CardContainer/CardContainer';
-import {getAllMovies } from '../util.js';
-
-
+import { getAllMovies } from '../util.js';
 
 class App extends Component {
   constructor() {
@@ -64,11 +62,9 @@ class App extends Component {
       return <Loading />
     } else {
       return (
-        
         <div className="App">
-          
           <Switch>
-            <Route exact path="/" render={() =>
+            <Route exact path="/rancid-tomatillos" render={() =>
               <> 
                 <Header 
                   className="header"
@@ -84,7 +80,6 @@ class App extends Component {
                 />
               </>
             }/>
-
             <Route path='/:id' render={({ match }) => {
               const id = match.params.id
               return (

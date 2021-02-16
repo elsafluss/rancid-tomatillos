@@ -19,7 +19,6 @@ const Card = ({movie}) => {
         </p>
       </article>
     </Link>
-
   )
 }
 
