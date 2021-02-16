@@ -37,7 +37,6 @@ class Modal extends Component {
       return (
         (foundMovie === null) ? <main className="loading">HEY</main> : 
         <section className="modal">
-  
           <img src={foundMovie.backdrop_path} alt="movie backdrop"/>
           <h2 className="m-title">{foundMovie.title}</h2>
           <p className="m-tagline">{foundMovie.tagline}</p>

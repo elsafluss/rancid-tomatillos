@@ -4,7 +4,6 @@ import '../Header/Header.scss'
 import './Error.scss'
 import Header from '../Header/Header'
 
-
 const Error = () => {
   return (
       <>
@@ -18,7 +17,6 @@ const Error = () => {
           </Link>
         </section>
       </>
-      
   )
 }
 
