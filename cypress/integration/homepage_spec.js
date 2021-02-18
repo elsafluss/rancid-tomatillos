@@ -14,7 +14,7 @@ describe('As a user', () => {
         })
       })
 
-    cy.visit('http://localhost:3000/')
+    cy.visit('http://localhost:3000/rancid-tomatillos')
     cy
     .get("header").should("have.text", "Randy's Totoos")
 
@@ -35,7 +35,7 @@ describe('As a user', () => {
         })
       })
 
-    cy.visit('http://localhost:3000/')
+    cy.visit('http://localhost:3000/rancid-tomatillos')
     .get("form input[type=text]")
       .type('peninsula')
       .should('have.value', 'peninsula')
