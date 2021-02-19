@@ -37,7 +37,7 @@ describe('As a user', () => {
         .get("h3")
       })
 
-    it('displays an user error screen', () => {
+    it('displays a user error screen', () => {
       cy.fixture("testMovieData.json")
         .then((response) => {
           
@@ -54,6 +54,6 @@ describe('As a user', () => {
           .should("have.attr", "src")
           .should("include", "https://media.giphy.com/media/10u6gt11vnm812/giphy.gif")
         .get("h3").first().click()
-        .url().should("eq", "http://localhost:3000/")
+        .url().should("eq", "http://localhost:3000/rancid-tomatillos")
       })
   })

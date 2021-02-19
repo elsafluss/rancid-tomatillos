@@ -8,7 +8,7 @@ describe('As a user', () => {
         })
       })
 
-    cy.visit('http://localhost:3000/')
+    cy.visit('http://localhost:3000/rancid-tomatillos')
       .get("article").eq(4).click()
       .url().should("eq", "http://localhost:3000/581392")
       .get(".modal img")
@@ -34,7 +34,7 @@ describe('As a user', () => {
         .contains("Revenue: $35,878,266")
       .get("button")
         .click()
-      .url().should("eq", "http://localhost:3000/")
+      .url().should("eq", "http://localhost:3000/rancid-tomatillos")
   })
 
   it('conditionally renders movie details', () => {
@@ -46,7 +46,7 @@ describe('As a user', () => {
         })
       })
 
-    cy.visit('http://localhost:3000/')
+    cy.visit('http://localhost:3000/rancid-tomatillos')
       .get("article").eq(2).click()
       .url().should("eq", "http://localhost:3000/718444")
       .get(".modal .m-budget")
@@ -55,6 +55,6 @@ describe('As a user', () => {
         .contains("Revenue not available")
       .get("button")
         .click()
-      .url().should("eq", "http://localhost:3000/")
+      .url().should("eq", "http://localhost:3000/rancid-tomatillos")
   })
 })
